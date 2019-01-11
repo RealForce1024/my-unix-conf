@@ -1,0 +1,109 @@
+#!/usr/bin/zsh
+alias p=python
+alias p3=python3
+alias s="source ~/.zshrc"
+
+
+#####docker alias###############
+## ------------------------------------
+# Docker alias and function
+# ------------------------------------
+
+# docker-compose
+alias dcp=docker-compose
+
+# Get latest container ID
+alias dl="docker ps -l -q"
+
+# Get container process
+alias dps="docker ps"
+
+# Get process included stop container
+alias dpa="docker ps -a"
+
+# Get images
+alias di="docker images"
+
+# Get container IP
+alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
+
+# Run deamonized container, e.g., $dkd base /bin/echo hello
+alias dkd="docker run -d -P"
+
+# Run interactive container, e.g., $dki base /bin/bash
+alias dki="docker run -i -t -P"
+
+# Execute interactive container, e.g., $dex base /bin/bash
+alias dex="docker exec -i -t"
+
+# Stop all containers
+dstop() { docker stop $(docker ps -a -q); }
+
+# Remove all containers
+drm() { docker rm $(docker ps -a -q); }
+
+# Stop and Remove all containers
+alias drmf='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
+
+# Remove all images
+dri() { docker rmi $(docker images -q); }
+
+# Dockerfile build, e.g., $dbu tcnksm/test
+dbu() { docker build -t=$1 .; }
+
+# Show all alias related docker
+dalias() { alias | grep 'docker' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/['|\']//g" | sort; }
+
+# Bash into running container
+dbash() { docker exec -it $(docker ps -aqf "name=$1") bash; }
+
+##########################################################
+# cite 'about-alias'
+# about-alias 'Phoenix abbreviations'
+# Phoenix Commands
+alias i='iex'
+alias ips='iex -S mix phx.server'
+alias ism='iex -S mix'
+alias m='mix'
+alias mab='mix archive.build'
+alias mai='mix archive.install'
+alias mat='mix app.tree'
+alias mc='mix compile'
+alias mcv='mix compile --verbose'
+alias mcx='mix compile.xref'
+alias mdc='mix deps.compile'
+alias mdg='mix deps.get'
+alias mdgc='mix do deps.get, deps.compile'
+alias mdu='mix deps.update'
+alias mdt='mix deps.tree'
+alias mdua='mix deps.update --all'
+alias mdun='mix deps.unlock'
+alias mduu='mix deps.unlock --unused'
+alias meb='mix escript.build'
+alias mec='mix ecto.create'
+alias mecm='mix do ecto.create, ecto.migrate'
+alias med='mix ecto.drop'
+alias mem='mix ecto.migrate'
+alias megm='mix ecto.gen.migration'
+alias merb='mix ecto.rollback'
+alias mers='mix ecto.reset'
+alias mho='mix hex.outdated'
+alias mlh='mix local.hex'
+alias mn='mix new'
+alias mns='mix new --sup'
+alias mpgc='mix phx.gen.channel'
+alias mpgh='mix phx.gen.html'
+alias mpgj='mix phx.gen.json'
+alias mpgm='mix phx.gen.model'
+alias mpgs='mix phx.gen.secret'
+alias mpn='mix phx.new --database=mysql'
+alias mpr='mix phx.routes'
+alias mps='mix phx.server'
+alias mr='mix run'
+alias mrnh='mix run --no-halt'
+alias mrl='mix release'
+alias mt='mix test'
+alias mts='mix test --stale'
+alias mtw='mix test.watch'
+alias mx='mix xref'
+###########################################################################
