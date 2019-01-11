@@ -10,7 +10,7 @@ alias s="source ~/.zshrc"
 # ------------------------------------
 
 # docker-compose
-alias dcp=docker-compose
+alias dcp="docker-compose up"
 
 # Get latest container ID
 alias dl="docker ps -l -q"
