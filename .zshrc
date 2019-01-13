@@ -10,6 +10,10 @@ export ZSH="/Users/fqc/.oh-my-zsh"
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
 ZSH_THEME="af-magic"
+#ZSH_THEME="powerlevel9k/powerlevel9k"
+#POWERLEVEL9K_MODE='nerdfont-complete'
+
+
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -65,6 +69,8 @@ ZSH_THEME="af-magic"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  zsh-syntax-highlighting
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -105,8 +111,9 @@ source ~/.zshrc.alias
 export SCALA_HOME="/Users/fqc/Documents/apps/scala-2.12.8"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home"
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+export ISTIO="/Users/fqc/Downloads/istioworkshopBeijing/istioBuilds/istio-1.0.5"
 #alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs-x86_64-10_10"
-export PATH="/usr/local/opt/ruby/bin:$JAVA_HOME/bin:$SCALA_HOME/bin:$PATH"
+export PATH="/usr/local/opt/ruby/bin:$JAVA_HOME/bin:$SCALA_HOME/bin:$ISTIO/bin:$PATH"
 
 
 
@@ -145,3 +152,4 @@ if exists percol; then
     zle -N percol_select_history
     bindkey '^R' percol_select_history
 fi
+
